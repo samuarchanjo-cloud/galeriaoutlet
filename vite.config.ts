@@ -54,14 +54,7 @@ export default defineConfig(async () => {
 
   const platformPlugin = isVercel
     ? nitro({
-        output: {
-          dir: ".output",
-        },
-        vercel: {
-          functions: {
-            runtime: "nodejs22.x",
-          },
-        },
+        preset: "vercel",
       })
     : (await import("@cloudflare/vite-plugin")).cloudflare({
         viteEnvironment: {
