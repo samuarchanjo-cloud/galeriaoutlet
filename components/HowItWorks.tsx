@@ -1,0 +1,6 @@
+import { ArrowRight, MessageCircle, PackageOpen, Shirt } from "lucide-react";
+import { messages, whatsappUrl } from "@/lib/whatsapp";
+import { Reveal } from "./Reveal";
+const steps = [[Shirt, "1", "Escolha o produto", "Navegue pelas categorias e encontre o presente ideal."], [MessageCircle, "2", "Envie uma mensagem", "Fale com nossa equipe pelo WhatsApp e tire suas dúvidas."], [PackageOpen, "3", "Receba como preferir", "Retire em uma unidade ou receba por Uber."]] as const;
+export function HowItWorks() { return <section className="conversion page-shell"><Reveal direction="left" className="how-card premium-card"><h2>Como funciona</h2><div className="steps">{steps.map(([Icon, number, title, copy], index) => <div className="step" key={number}><div className="step-icon"><Icon /><b>{number}</b></div><strong>{title}</strong><p>{copy}</p>{index < steps.length - 1 ? <ArrowRight className="step-arrow" /> : null}</div>)}</div></Reveal><Reveal direction="right" className="cta-card premium-card"><span>Ainda procurando</span><h2>O presente ideal?</h2><p>Fale agora com nossa equipe e encontre a melhor escolha.</p><a href={whatsappUrl(messages.contact)} target="_blank" rel="noreferrer" className="whatsapp-button"><MessageCircle /> Chamar no WhatsApp</a></Reveal></section>; }
+
