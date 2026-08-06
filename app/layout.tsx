@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { SplashScreen } from "@/components/SplashScreen";
 import "./globals.css";
 
 const baseMetadata: Metadata = {
@@ -24,4 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="pt-BR"><body>{children}</body></html>; }
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const cookieStore = await cookies();
+  const showSplash = cookieStore.get("galeria_splash_seen")?.value !== "1";
+
+  return <html lang="pt-BR"><body><SplashScreen initialVisible={showSplash} />{children}</body></html>;
+}
