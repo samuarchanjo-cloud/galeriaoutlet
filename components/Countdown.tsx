@@ -8,6 +8,5 @@ function remaining() { const delta = Math.max(0, target - Date.now()); return { 
 export function Countdown() {
   const [time, setTime] = useState(remaining);
   useEffect(() => { const timer = window.setInterval(() => setTime(remaining()), 1000); return () => window.clearInterval(timer); }, []);
-  return <Reveal><section className="countdown page-shell" aria-label="Contagem regressiva para o Dia dos Pais"><Image src="/assets/hero/contagem-regressiva.png" alt="" fill sizes="(max-width: 900px) 100vw, 1200px" className="countdown-bg" /><div className="countdown-title"><small>Faltam poucos dias para o</small><strong>Dia dos Pais!</strong></div><div className="countdown-values">{Object.entries(time).map(([label, value]) => <div className="time-block" key={label}><b suppressHydrationWarning>{String(value).padStart(2, "0")}</b><span>{label}</span></div>)}</div></section></Reveal>;
+  return <Reveal><section className="countdown page-shell" aria-label="Contagem regressiva para o Dia dos Pais"><Image src="/assets/hero/contagem-regressiva.png" alt="" fill unoptimized sizes="(max-width: 900px) 100vw, 1200px" className="countdown-bg" /><div className="countdown-title"><small>Faltam poucos dias para o</small><strong>Dia dos Pais!</strong></div><div className="countdown-values">{Object.entries(time).map(([label, value]) => <div className="time-block" key={label}><b suppressHydrationWarning>{String(value).padStart(2, "0")}</b><span>{label}</span></div>)}</div></section></Reveal>;
 }
-
