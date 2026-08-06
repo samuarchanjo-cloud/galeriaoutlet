@@ -1,3 +1,4 @@
+import { nitro } from "nitro/vite";
 import vinext from "vinext";
 import { defineConfig } from "vite";
 import hostingConfig from "./.openai/hosting.json";
@@ -10,6 +11,7 @@ const { d1, r2 } = hostingConfig;
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
+const isVercel = Boolean(process.env.VERCEL);
 
 const localBindingConfig = {
   main: "./worker/index.ts",
@@ -50,8 +52,24 @@ export default defineConfig(async () => {
   process.env.WRANGLER_LOG_PATH ??= ".wrangler/logs";
   process.env.MINIFLARE_REGISTRY_PATH ??= ".wrangler/registry";
 
-  // Wrangler snapshots its log path while the Cloudflare plugin is imported.
-  const { cloudflare } = await import("@cloudflare/vite-plugin");
+  const platformPlugin = isVercel
+    ? nitro({
+        output: {
+          dir: ".output",
+        },
+        vercel: {
+          functions: {
+            runtime: "nodejs22.x",
+          },
+        },
+      })
+    : (await import("@cloudflare/vite-plugin")).cloudflare({
+        viteEnvironment: {
+          name: "rsc",
+          childEnvironments: ["ssr"],
+        },
+        config: localBindingConfig,
+      });
 
   return {
     server: isCodexSeatbeltSandbox
@@ -60,10 +78,7 @@ export default defineConfig(async () => {
     plugins: [
       vinext(),
       sites(),
-      cloudflare({
-        viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
-        config: localBindingConfig,
-      }),
+      platformPlugin,
     ],
   };
 });
