@@ -20,7 +20,7 @@ export const products: Product[] = [
   product("blusa-fluminense", "Camisa Fluminense", "times", "blusa-fluminense.png", 79.9, "Camisa premium do Fluminense com toque macio e ótimo caimento."),
   product("blusa-vasco", "Camisa Vasco", "times", "blusa-vasco.png", 79.9, "Camisa premium do Vasco com design clássico e presença.", true),
   product("tenis-1", "Tênis Lacoste Casual", "tenis", "tenis-1.png", 199.9, "Tênis versátil, confortável e pronto para acompanhar a rotina.", true),
-  product("tenis-2", "Tênis Lacoste Casual", "tenis", "tenis-2.png", 1999.9, "Modelo casual com visual limpo e construção confortável."),
+  product("tenis-2", "Tênis Lacoste Casual", "tenis", "tenis-2.png", 199.9, "Modelo casual com visual limpo e construção confortável."),
   product("tenis-3", "Tênis Nike Casual Branco", "tenis", "tenis-3.png", 129.9, "Tênis urbano com acabamento premium e solado resistente."),
   product("tenis-4", "Tênis Black Nike", "tenis", "tenis-4.png", 129.9, "Edição preta com design sofisticado para diferentes combinações.", true),
   product("bone-1", "Boné Cruz de Malta", "bones", "bone-1.png", 49.9, "Boné estruturado com ajuste confortável e identidade marcante.", true),
