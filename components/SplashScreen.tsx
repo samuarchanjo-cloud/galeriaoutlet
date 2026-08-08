@@ -6,9 +6,15 @@ export function SplashScreen({ initialVisible }: { initialVisible: boolean }) {
   const [visible, setVisible] = useState(initialVisible);
 
   useEffect(() => {
-    if (!initialVisible) return;
+    const installedApp =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.matchMedia("(display-mode: fullscreen)").matches ||
+      (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
+
+    if (!initialVisible && !installedApp) return;
 
     document.cookie = "galeria_splash_seen=1; path=/; SameSite=Lax";
+    setVisible(true);
     const timer = window.setTimeout(() => setVisible(false), 1600);
     return () => window.clearTimeout(timer);
   }, [initialVisible]);
