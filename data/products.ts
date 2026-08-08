@@ -40,7 +40,7 @@ export const products: Product[] = [
   product("kit-4", "Kit Dri-Fit Real Madrid", "kits", "kits-4.png", 179.9, "Kit pensado para surpreender com estilo e personalidade."),
   product("cinto", "Cinto Premium", "acessorios", "acessorio-cinto.png", 34.9, "Cinto com acabamento premium, fivela resistente e design elegante.", true),
   product("copo-flamengo", "Copo Flamengo", "acessorios", "acessorio-copo-flamengo.png", 29.9, "Copo térmico do Flamengo para manter sua bebida na temperatura ideal.", true),
-  product("copo-vasco", "Copo Vasco", "acessorios", "acessorio-copo-vasco.png", 29.9, "Copo térmico do Vasco com acabamento marcante e ótima vedação."),
+  product("carteira", "Carteira Premium", "acessorios", "acessorio-carteira.png", 34.9, "Carteira premium com acabamento elegante, resistente e prática para o dia a dia."),
   product("relogio", "Relógio Sport", "acessorios", "acessorio-relogio.png", 49.9, "Relógio esportivo com visual robusto e funções para o dia a dia."),
 ];
 
