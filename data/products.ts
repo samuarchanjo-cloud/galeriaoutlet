@@ -51,8 +51,8 @@ export const categoryLabels: Record<CategorySlug, string> = {
 };
 
 export const categories = [
-  { slug: "kits", label: "Kits", image: "/assets/produtos/card--kits.png" },
-  { slug: "tenis", label: "Tênis", image: "/assets/produtos/card--tenis.png" },
+  { slug: "kits", label: "Kits", image: "/assets/produtos/card-categoria-kits.png" },
+  { slug: "tenis", label: "Tênis", image: "/assets/produtos/card-categoria-tenis.png" },
   { slug: "bones", label: "Bonés", image: "/assets/produtos/card-categoria-bones.png" },
   { slug: "kenner", label: "Kenner", image: "/assets/produtos/card-categoria-kenner.png" },
   { slug: "shorts", label: "Shorts", image: "/assets/produtos/card-categoria-bermudas.png" },
@@ -61,4 +61,3 @@ export const categories = [
 
 export const formatPrice = (value: number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
 export const getProduct = (id: string) => products.find((item) => item.id === id);
-
